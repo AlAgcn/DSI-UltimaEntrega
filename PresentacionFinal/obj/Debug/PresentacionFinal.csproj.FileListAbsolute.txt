@@ -35,3 +35,40 @@ D:\Visual Studio Proyects\PresentacionFinal\PresentacionFinal\PresentacionFinal\
 D:\Visual Studio Proyects\PresentacionFinal\PresentacionFinal\PresentacionFinal\obj\Debug\PresentacionFinal.csproj.CopyComplete
 D:\Visual Studio Proyects\PresentacionFinal\PresentacionFinal\PresentacionFinal\obj\Debug\PresentacionFinal.exe
 D:\Visual Studio Proyects\PresentacionFinal\PresentacionFinal\PresentacionFinal\obj\Debug\PresentacionFinal.pdb
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\obj\Debug\PresentacionFinal.Form1.resources
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\obj\Debug\PresentacionFinal.Properties.Resources.resources
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\obj\Debug\PresentacionFinal.csproj.GenerateResource.cache
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\obj\Debug\PresentacionFinal.csproj.CoreCompileInputs.cache
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\obj\Debug\PresentacionFinal.exe
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\obj\Debug\PresentacionFinal.pdb
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\bin\Debug\PresentacionFinal.exe.config
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\bin\Debug\PresentacionFinal.exe
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\bin\Debug\PresentacionFinal.pdb
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\bin\Debug\BouncyCastle.Crypto.dll
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\bin\Debug\Common.Logging.Core.dll
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\bin\Debug\Common.Logging.dll
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\bin\Debug\itext.barcodes.dll
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\bin\Debug\itext.forms.dll
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\bin\Debug\itext.io.dll
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\bin\Debug\itext.kernel.dll
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\bin\Debug\itext.layout.dll
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\bin\Debug\itext.pdfa.dll
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\bin\Debug\itext.sign.dll
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\bin\Debug\itext.styledxmlparser.dll
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\bin\Debug\itext.svg.dll
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\bin\Debug\BouncyCastle.Crypto.xml
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\bin\Debug\Common.Logging.pdb
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\bin\Debug\Common.Logging.xml
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\bin\Debug\Common.Logging.Core.pdb
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\bin\Debug\Common.Logging.Core.xml
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\bin\Debug\itext.barcodes.xml
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\bin\Debug\itext.forms.xml
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\bin\Debug\itext.io.xml
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\bin\Debug\itext.kernel.xml
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\bin\Debug\itext.layout.xml
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\bin\Debug\itext.pdfa.xml
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\bin\Debug\itext.sign.xml
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\bin\Debug\itext.styledxmlparser.xml
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\bin\Debug\itext.svg.xml
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\obj\Debug\PresentacionFinal.csproj.CopyComplete
+D:\Visual Studio Proyects\Nueva carpeta\DSI-UltimaEntrega\PresentacionFinal\obj\Debug\PresentacionFinal.csprojAssemblyReference.cache

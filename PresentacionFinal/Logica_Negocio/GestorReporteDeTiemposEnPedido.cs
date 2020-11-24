@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace PresentacionFinal
 {
@@ -27,95 +27,61 @@ namespace PresentacionFinal
         string[] pisosSelecc { get; set; }
 
         Pedido[] pedidos { get; set; }
-        enum FormasVis {pdf, porPantalla, excel}
+        enum FormasVis { pdf, porPantalla, excel }
         FormasVis formaVis;
 
-        List<int> tiemposAbierto = new List<int>();
-        List<int> tiemposCobrado = new List<int>();
-        List<int> tiemposFacturado = new List<int>();
-
+        DataTable rtdos;
         public void TomarFormaVis(IConstructor constructor)
         {
             formaVis = FormasVis.pdf;
             fechaHoraActual = DateTime.Now;
+            
         }
 
         private void HardCore()
         {
-            //Hardcodeo de atributos
-            string[] estadosSel = {"Abierto", "Cancelado", "Cobrado", "Facturado" };
-            estadosSelec = estadosSel;
-
             titulo = "Reporte de Tiempos en pedidos";
-
-            fechaHoraDesde = DateTime.Parse("13/09/2020");
-            fechaHoraHasta = DateTime.Now;
-
-            string[] pisosSel = { "PlantaBaja", "1erPsio", "2doPiso"};
-            pisosSelecc = pisosSel;
-            string[] sectoresSel = { "Bar", "Comedor", "Vereda", "Patio" };
-            sectoresSelecc = sectoresSel;
-
             opcTotalizar = true;
             nombreUsuarioLog = "Lucas";
             fechaHoraActual = DateTime.Now;
 
-            //Creacion de Pedidos con sus historiales aleatorios
-            HistorialEstado[] histoPedido = new HistorialEstado[3];
-            Pedido[] mispedidos = new Pedido[5];
+            string consulta = "SELECT p.id AS Pedido, p.fechaHoraPedido, s.Nombre AS Sector, m.numero AS MesaN, DATEDIFF('n', h.fechaHoraInicio, h.fechaHoraFin) AS 'Permanencia en Minutos', e.Nombre AS Estado " +
+                                "FROM(((Pedido p INNER JOIN " +
+                                "Mesa m ON(p.id_mesa = m.id)) " +
+                                "INNER JOIN Sector s ON(m.id_seccion = s.id) ) " +
+                                "INNER JOIN HistorialEstado h ON(h.id_pedido = p.id) ) " +
+                                "INNER JOIN Estado e ON(e.id = h.estado) " +
+                                "WHERE p.fechaHoraPedido BETWEEN @desde AND @hasta ";
+            var parametros = new Dictionary<string, object>();
+            parametros.Add("desde", fechaHoraDesde.Date);
+            parametros.Add("hasta", fechaHoraHasta.Date);
 
-            for (int i=0; i < 5; i++)
-            {
-                HistorialEstado historialX = new HistorialEstado();
-
-                historialX.fechaHoraFin = FechasAleatorias.GetAleatorio();
-                historialX.fechaHoraInicio = FechasAleatorias.GetAleatorio(historialX.fechaHoraFin);
-                historialX.estado = new Estado(); historialX.estado.nombre = "Abierto";
-                histoPedido[0] = historialX;
-                tiemposAbierto.Add((int)(historialX.fechaHoraFin - historialX.fechaHoraInicio).TotalHours);
-
-                historialX.fechaHoraFin = FechasAleatorias.GetAleatorio();
-                historialX.fechaHoraInicio = FechasAleatorias.GetAleatorio(historialX.fechaHoraFin);
-                historialX.estado = new Estado(); historialX.estado.nombre = "Cobrado";
-                tiemposCobrado.Add((int)(historialX.fechaHoraFin - historialX.fechaHoraInicio).TotalHours);
-
-                histoPedido[1] = historialX;
-                historialX.fechaHoraFin = FechasAleatorias.GetAleatorio();
-                historialX.fechaHoraInicio = FechasAleatorias.GetAleatorio(historialX.fechaHoraFin);
-                historialX.estado = new Estado(); historialX.estado.nombre = "Facturado";
-                tiemposFacturado.Add((int)(historialX.fechaHoraFin - historialX.fechaHoraInicio).TotalHours);
-
-                histoPedido[2] = historialX;
-
-                Pedido pedidoX = new Pedido(); pedidoX.cantComensales = 4; pedidoX.fechaHoraPed = histoPedido[0].fechaHoraInicio; pedidoX.nroPedido = i; pedidoX.historial = histoPedido;
-                mispedidos[i] = pedidoX;
-            }
-            pedidos = mispedidos;
+            rtdos = new DataTable();
+            rtdos = BDHelper.Instance.ConsultarSQL(consulta, parametros);
 
         }
         public Object GenerarReporte()
         {
             HardCore();
 
-            Object[] tiemposCalculados = new object[estadosSelec.Length*3];
-            tiemposCalculados[0]= tiemposAbierto.ToArray().Max();
-            tiemposCalculados[1] = tiemposAbierto.ToArray().Min();
-            tiemposCalculados[2] = ((int)tiemposCalculados[0] + (int)tiemposCalculados[1]) / 2;
 
             IConstructor constructor = new ConstructorReportePDF();
             Director director = new Director(constructor);
             director.Construir(titulo, fechaHoraDesde, fechaHoraHasta, estadosSelec, pisosSelecc, sectoresSelecc,
-                opcTotalizar, pedidos, tiemposCalculados, nombreUsuarioLog, fechaHoraActual);
+                opcTotalizar, pedidos, rtdos, nombreUsuarioLog, fechaHoraActual);
 
             var formaVisualizacion = constructor.ObtenerProducto();
             var pdf = formaVisualizacion.VisualizarReporteGenerado();
             return pdf;
         }
 
-        public void TomarFiltros(DateTime fechaIni, DateTime fechaFin)
+        public void TomarFiltros(DateTime fechaIni, DateTime fechaFin, string[] estados, string[] sectores)
         {
             fechaHoraDesde = fechaIni;
             fechaHoraHasta = fechaFin;
+
+            estadosSelec = estados;
+            sectoresSelecc = sectores;
         }
 
     }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Data;
+
 
 namespace PresentacionFinal
 {
@@ -9,23 +9,45 @@ namespace PresentacionFinal
     {
         VistaPDF vistaPDF;
 
-public int CalcularNumeroDePag()
+        public int CalcularNumeroDePag()
         {
             throw new NotImplementedException();
         }
 
-        public void ConstruirCuerpo(string[] estados, string[] sectores, object[] calculoReporte)
+        public void ConstruirCuerpo(string[] estados, string[] sectores, DataTable calculoReporte)
         {
+            List<int> valores;
+            int max, min, prom;
+            vistaPDF.IniciarFila();
+
             for (int i=0; i < sectores.Length; i++)
             {
-                if (i==0)
-                    vistaPDF.IniciarFila();
-                if (i < 1)
+
+                for (int k = 0; k < estados.Length; k++)
                 {
-                    //vistaPDF.reporteCuerpo = new string[sectores.Length][];
-                    vistaPDF.AgregarFila(sectores[i], estados[i], calculoReporte[i], calculoReporte[i+1], calculoReporte[i+2]);
+                    valores = new List<int>();
+                    prom = 0;
+
+                    for (int j = 0; j < calculoReporte.Rows.Count; j++)
+                    {
+                        if (calculoReporte.Rows[j][5].ToString() == estados[k] && calculoReporte.Rows[j][2].ToString() == sectores[i])
+                        {
+                            var valor = int.Parse(calculoReporte.Rows[j][4].ToString());
+                            valores.Add(valor);
+                            prom = prom + valor;
+                        }
+
+
+                    }
+                    if (valores.Count > 0)
+                    {
+                        valores.Sort();
+                        min = valores[0];
+                        max = valores[valores.Count - 1];
+                        prom = prom / valores.Count;
+                        vistaPDF.AgregarFila(sectores[i], estados[k], max, min, prom);
+                    }
                 }
-                //else Agregar una nueva pagina.
 
             }
         }

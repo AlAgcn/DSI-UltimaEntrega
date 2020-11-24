@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using iText.Kernel.Colors;
 using iText.Kernel.Pdf;
 using iText.Kernel.Pdf.Canvas.Draw;
@@ -18,12 +16,13 @@ namespace PresentacionFinal
         public string reporteEncabezado { get; set; }
         public string reportePie { get; set; }
 
+        PdfWriter writer;
         PdfDocument pdf;
         Document document;
         Table table;
         public VistaPDF() 
         {
-            PdfWriter writer = new PdfWriter("C:\\Users\\Ali CN\\Desktop\\demo.pdf");
+            writer = new PdfWriter("C:\\Users\\Ali CN\\Desktop\\demo.pdf");
             pdf = new PdfDocument(writer);
             document = new Document(pdf);
         }
@@ -59,27 +58,39 @@ namespace PresentacionFinal
             table.AddCell(cell13);
             table.AddCell(cell14);
             table.AddCell(cell15);
-            document.Add(table);
+            //document.Add(table);
         }
         public void AgregarEncabezado(string titulo, DateTime fechaDesde, DateTime fechaHasta)
         {
             Paragraph header = new Paragraph(titulo + " " + fechaDesde.ToShortDateString() +  " - "+ fechaHasta.ToShortDateString())
                                 .SetTextAlignment(TextAlignment.JUSTIFIED)
                                 .SetFontSize(20);
-
             document.Add(header);
         }
 
         public void AgregarFila(string sectores, string estados, Object calculosMax, Object calculosMin, Object calculosProm)
         {
 
-            List<Cell> fila = SetFila(sectores, estados, calculosMax, calculosMin, calculosProm);
-            /*foreach(Cell celda in fila)
-            {
-                table.AddCell(celda);
-                document.Add(table);
-            }*/
-            document.Add(table);
+
+            //table = new Table(5, false);
+            Cell cellx1 = new Cell(1, 1)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph(estados));
+            Cell cellx2 = new Cell(1, 1)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph(sectores));
+            Cell cellx3 = new Cell(1, 1)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph(calculosMax.ToString()));
+            Cell cellx4 = new Cell(1, 1)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph(calculosMin.ToString()));
+            Cell cellx5 = new Cell(1, 1)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .Add(new Paragraph(calculosProm.ToString()));
+            table.AddCell(cellx1); table.AddCell(cellx2); table.AddCell(cellx3); table.AddCell(cellx4); table.AddCell(cellx5);
+
+            //document.Add(table);
         }
 
 
@@ -133,6 +144,7 @@ namespace PresentacionFinal
         }
         public void SetPiePagina(string usuario, DateTime fechaHoraActual)
         {
+            document.Add(table);
             SetFirmaPagina(usuario, fechaHoraActual);
             SetNumeroPagina();
             pdf.Close();

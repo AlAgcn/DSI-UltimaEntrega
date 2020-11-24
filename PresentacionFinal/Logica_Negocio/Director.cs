@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using PresentacionFinal;
+using System.Data;
+
 
 namespace PresentacionFinal
 {
@@ -11,7 +9,7 @@ namespace PresentacionFinal
         IConstructor constructor;
         public void Construir(string titulo, DateTime fechaDesde, DateTime fechaHasta, 
             string[] estados, string[] pisos, string[] sectores, bool totalizar,
-            Pedido[] pedidos, Object[] calculosReporte, string usuario,
+            Pedido[] pedidos, DataTable calculosReporte, string usuario,
             DateTime fechaHoraActual)
         {
             constructor.ConstruirProducto();

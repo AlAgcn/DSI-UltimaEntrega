@@ -84,6 +84,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BDHelper.cs" />
     <Compile Include="Entidades\Estado.cs" />
     <Compile Include="Entidades\HistorialEstado.cs" />
     <Compile Include="Entidades\Mesa.cs" />
